@@ -74,36 +74,42 @@
     /**
      * Back to top button
      */
-    let backtotop = select('.back-to-top')
-    if (backtotop) {
-        const toggleBacktotop = () => {
-            if (window.scrollY > 100) {
-                backtotop.classList.add('active')
-            } else {
-                backtotop.classList.remove('active')
+    //let backtotop = select('.back-to-top')
+    //if (backtotop) {
+    //    const toggleBacktotop = () => {
+    //        if (window.scrollY > 100) {
+    //            backtotop.classList.add('active')
+    //        } else {
+    //            backtotop.classList.remove('active')
+    //        }
+    //    }
+    //    window.addEventListener('load', toggleBacktotop)
+    //    onscroll(document, toggleBacktotop)
+    //}
+    window.onBackToTop = (id) => {
+        let backtotop = select('.back-to-top')
+        if (backtotop) {
+            const toggleBacktotop = () => {
+                if (window.scrollY > 100) {
+                    backtotop.classList.add('active')
+                } else {
+                    backtotop.classList.remove('active')
+                }
             }
+            window.addEventListener('load', toggleBacktotop)
+            onscroll(document, toggleBacktotop)
         }
-        window.addEventListener('load', toggleBacktotop)
-        onscroll(document, toggleBacktotop)
     }
 
     /**
      * Mobile nav toggle
      */
-    on('click', '.mobile-nav-toggle', function (e) {
-        select('body').classList.toggle('mobile-nav-active')
-        this.classList.toggle('bi-list')
-        this.classList.toggle('bi-x')
-    })
-
-    window.abcd = (function () {
-        const efg = function () {
-            document.body.classList.toggle('mobile-nav-toggle');
-            this.classList.toggle('bi-list')
-            this.classList.toggle('bi-x')
-        };
-    })();
-
+    window.onMobileNavToggle = (id) => {
+        select('body').classList.toggle('mobile-nav-active');
+        var obj = document.getElementById(id);
+        obj.classList.toggle('bi-list');
+        obj.classList.toggle('bi-x');
+    } 
 
     /**
      * Scrool with ofset on links with a class name .scrollto
